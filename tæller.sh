@@ -1,9 +1,10 @@
 #!/bin/zsh
 # shellcheck shell=bash
 
+BASEDIR=$(dirname $0)
 
 # define default filter file
-filter="google.txt"
+filter="$BASEDIR/google.txt"
 
 # allow user to specify an alternative filter file
 #   ./tæller.sh meta.txt
@@ -50,7 +51,8 @@ beep() {
         # printf \\x07
 
         # this works, thanks to https://osxdaily.com/2016/03/31/play-dtmf-tones-mac/
-        afplay --volume 0.05 /System/Library/Components/CoreAudio.component/Contents/SharedSupport/SystemSounds/telephony/dtmf-pound.caf &
+#        afplay --volume 0.05 /System/Library/Components/CoreAudio.component/Contents/SharedSupport/SystemSounds/telephony/dtmf-pound.caf &
+        afplay --volume 0.05 $BASEDIR/GeigerCounter.wav &
     done
 }
 
